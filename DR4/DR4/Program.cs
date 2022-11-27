@@ -174,7 +174,6 @@ namespace DR4
             person5.Attended(event9.Id, true);
             person5.Attended(event10.Id, true);
 
-            Console.WriteLine(event1.Id);
 
 
             List<Person> listPersons = new List<Person>() { person1, person2, person3, person4, person5 };
@@ -357,8 +356,6 @@ namespace DR4
                         Console.Clear();
                         Izbornik();
                         break;
-                    default:
-                        break;
                 }
 
             }
@@ -405,8 +402,6 @@ namespace DR4
                     case 3:
                         Console.Clear();
                         Izbornik();
-                        break;
-                    default:
                         break;
                 }
 
@@ -477,7 +472,8 @@ namespace DR4
                     foreach(var k in p.Attendance.Keys) 
                     {
                         Event odabraniEvent = new Event();
-                        if (p.Attendance[k]==true)
+                        //ovdje mi javlja neku gresku ali nisan znala u cemu je problem
+                        if (p.Attendance.ContainsKey(k) && p.Attendance[k]==true)
                         {
                             foreach (var t in listEvents)
                             {
@@ -539,8 +535,7 @@ namespace DR4
                     case 5:
                         IzadiIzPrograma();
                         break;
-                    default:
-                        break;
+
                 }
             }
 
